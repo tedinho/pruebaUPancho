@@ -1,0 +1,110 @@
+<div class="w3-container">
+    <br />
+
+    <div class="w3-row">
+        <div class="w3-col s10 m10 l10">
+
+            <h2>Obras</h2>
+        </div>
+        <div class="w3-col s2 m2 l2">
+
+            <button style="    width: 100%;
+            margin-top: 22px;" onclick="document.getElementById('id01').style.display='block'"
+                class="w3-button w3-teal w3-border w3-round-large">Nuevo</button>
+        </div>
+
+    </div>
+
+    <br />
+    <form [formGroup]="filtro" (ngSubmit)="buscar()">
+        <div class="w3-row-padding">
+            <div class="w3-col s4 m4 l4">
+                <label>Nombre:</label>
+                <input class="w3-input w3-border" type="text" formControlName="nombre">
+            </div>
+            <div class="w3-col s1 m1 l1"><br />
+                <button type="submit" class="w3-button w3-teal w3-border w3-round-large">Buscar</button>
+            </div>
+        </div>
+    </form>
+    <br />
+    <!-- encabezado -->
+    <div class="w3-row row-header" *ngIf="obras!=null&&obras.length>0">
+        <div class="w3-col s10 m10 l10">
+            <div class="w3-row w3-hide-small">
+                <div class="w3-col l4 m4">Nombre</div>
+                <div class="w3-col l4 m4">Fecha Ingreso</div>
+                <div class="w3-col l4 m4">Estado</div>
+            </div>
+            <div class="w3-row w3-hide-medium w3-hide-large">
+                <div>Obras</div>
+            </div>
+        </div>
+
+        <div class="w3-col m2 l2 w3-hide-small col-acciones">Acciones</div>
+    </div>
+
+    <div *ngFor="let o of obras">
+        <div class="w3-row bg-#{(cont.index) mod 2}">
+            <div class="w3-col s10 m10 l10 col-datos">
+                <div class="w3-row">
+                    <div>
+                        <div class="w3-col s6 w3-hide-medium w3-hide-large">Nombre</div>
+                        <div class="w3-col l4 m4 s6">{{o.nombre}}</div>
+                    </div>
+                    <div>
+                        <div class="w3-col s6 w3-hide-medium w3-hide-large">Fecha INgreso</div>
+                        <div class="w3-col l4 m4 s6">{{o.fecha_ingreso}}</div>
+                    </div>
+                    <div>
+                        <div class="w3-col s6 w3-hide-medium w3-hide-large">Estado</div>
+                        <div class="w3-col l4 m4 s6">{{o.estado}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w3-col s2 m2 l2 col-acciones">
+                <button onclick="document.getElementById('id01').style.display='block'" type="submit"
+                    class="w3-button w3-teal w3-border w3-round-large" (click)="editar(o)">
+                    Editar
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div id="id01" class="w3-modal">
+        <div class="w3-modal-content">
+            <div class="w3-container">
+                <span onclick="document.getElementById('id01').style.display='none'"
+                    class="w3-button w3-display-topright">&times;</span>
+                <br />
+
+                <form [formGroup]="formularioObra" class="w3-container" (ngSubmit)="guardar()">
+                    <h3>Obra</h3>
+                    <div class="form-group">
+                        <label>
+                            Nombre:
+                            <input class="w3-input w3-border" type="text" formControlName="nombre">
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Fecha Ingreso:
+                            <input class="w3-input w3-border" type="date" formControlName="fecha_ingreso">
+                        </label>
+                    </div>
+                    <br />
+                    <div style="    width: 45%;
+                    margin-left: auto;
+                    margin-right: auto;">
+                        <button style="width: 100%;" type="submit"
+                            class="w3-button w3-teal w3-border w3-round-large">Guardar</button>
+                    </div>
+                </form>
+                <br /><br />
+            </div>
+        </div>
+    </div>
+</div>

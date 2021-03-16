@@ -1,0 +1,34 @@
+.row-header, .row-header-simple {
+	font-weight: bold;
+	border-top: 2px solid #ddd;
+	border-bottom: 4px solid #1e5a8b;
+	background: #eee;
+}
+
+.bg-0 {
+	background-color: #fff;
+}
+
+.bg-1 {
+	background-color: #eee;
+}
+
+.row-header>.w3-col>.w3-row>.w3-col {
+	padding: 5px;
+}
+
+.row-header-simple .w3-col {
+	padding: 5px;
+}
+
+.col-datos {
+	font-size: 0.9em;
+}
+
+.col-datos-simple {
+	padding: 5px;
+}
+
+.col-datos .w3-col {
+	padding: 5px;
+}
